@@ -1,7 +1,7 @@
 <div class="box_links">
     <?php if(doo_here_links($post->ID)){ ?>
     <div class="linktabs">
-    	<h2><?php _d('Links Directory'); ?></h2>
+    	<h2><?php _d('Links'); ?></h2>
     	<ul class="idTabs">
     		<?php // Menu Link types
             if(doo_here_type_links($post->ID, __d('Download'))) echo '<li><a href="#download">'. __d('Download'). '</a></li>';
