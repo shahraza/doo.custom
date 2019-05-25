@@ -1,3 +1,11 @@
+<?php
+// Auto gnerate Torrent
+$bigt_id  = get_post_meta($post->ID,'ids',true);
+$bigt_url = 'http://bigtorrent.ir/torrent.php?id=' . $bigt_id;
+// Auto generate Sub
+$sub_url = 'http://subscenes.ir/subtitles/searching?q=' . str_replace(' ','+',get_the_title());
+
+?>
 <div class="box_links">
     <?php if(doo_here_links($post->ID)){ ?>
     <div class="linktabs">
@@ -8,6 +16,8 @@
     		if(doo_here_type_links($post->ID, __d('Torrent'))) echo '<li><a href="#torrent">'. __d('Torrent'). '</a></li>';
     	    if(doo_here_type_links($post->ID, __d('Watch online'))) echo '<li><a href="#videos">'. __d('Watch online'). '</a></li>';
             if(doo_here_type_links($post->ID, __d('Rent or Buy'))) echo '<li><a href="#buy">'. __d('Rent or Buy'). '</a></li>';
+            echo '<li><a href="'.$bigt_url.'" target="_blank" style="background-color: #f8b739;color: white;">'. __d('Vip torrent'). '</a></li>';
+            echo '<li><a href="'.$sub_url.'" target="_blank" style="background-color: #408BEA;color: white;">'. __d('Subtitle'). '</a></li>';
             // End Menu ?>
     	</ul>
     </div>
@@ -18,6 +28,11 @@
         DooLinks::tablelist_front($post->ID, __d('Watch online'), 'videos');
         DooLinks::tablelist_front($post->ID, __d('Rent or Buy'), 'buy');
 
+    } else {
+        echo '<div class="linktabs"><h2>Links</h2><ul class="idTabs">';
+        echo '<li><a href="'.$bigt_url.'" target="_blank" style="background-color: #f8b739;color: white;">'. __d('Vip torrent'). '</a></li>';
+        echo '<li><a href="'.$sub_url.'" target="_blank" style="background-color: #408BEA;color: white;">'. __d('Subtitle'). '</a></li>';
+        echo '</ul></div>';
     }
 
     // Form Post Links
