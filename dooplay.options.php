@@ -937,8 +937,8 @@ $options[] = array(
                     'title' => __d('Type Search'),
                     'desc'  => __d('Select search type for subtitle'),
                     'options' => array(
-                        'tlr' => __d('Search by title'),
-                        'ort' => __d('Search by original title')
+                        'sbt' => __d('Search by title'),
+                        'sbo' => __d('Search by original title')
                     ),
                     'default' => 'tlr',
                 ),
