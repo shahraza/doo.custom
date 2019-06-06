@@ -940,7 +940,7 @@ $options[] = array(
                         'sbt' => __d('Search by title'),
                         'sbo' => __d('Search by original title')
                     ),
-                    'default' => 'tlr',
+                    'default' => 'sbt',
                 ),
 
                 array(
