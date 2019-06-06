@@ -1,9 +1,28 @@
 <?php
 // Auto gnerate Torrent
+$getpt = get_post_type();
 $bigt_id  = get_post_meta($post->ID,'ids',true);
-$bigt_url = 'http://bigtorrent.ir/torrent.php?id=' . $bigt_id;
+if ( $getpt == 'movies' ) {
+    $bigt_url = 'http://bigtorrent.ir/?id=' . $bigt_id . '&t=movies';
+} else {
+    $bigt_url = 'http://bigtorrent.ir/?id=' . $bigt_id . '&t=episodes';
+}
 // Auto generate Sub
-$sub_url = 'http://subscenes.ir/subtitles/searching?q=' . str_replace(' ','+',get_the_title());
+$sub_url = 'http://subscenes.ir/subtitles/searchbytitle?query=' . str_replace(' ','+',get_the_title());
+// Automation link
+$lstp = cs_get_option('linksearchtype','sbt');
+switch ( $getpt ) {
+    case 'movies':
+        if( $lstp == 'sbt' ) {
+            $sub_url = 'http://subscenes.ir/subtitles/searchbytitle?query=' . str_replace(' ','+', get_the_title());
+        } else {
+            $sub_url = 'http://subscenes.ir/subtitles/searchbytitle?query=' . str_replace(' ','+', get_post_meta($post->ID, 'original_title',true));
+        }
+        break;
+    case 'episodes':
+        $sub_url = 'http://subscenes.ir/subtitles/searchbytitle?query=' . str_replace(' ','+', get_post_meta($post->ID, 'serie',true));
+        break;
+}
 
 ?>
 <div class="box_links">
