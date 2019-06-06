@@ -11,7 +11,6 @@ if ( $getpt == 'movies' ) {
 $sub_url = 'http://subscenes.ir/subtitles/searchbytitle?query=' . str_replace(' ','+',get_the_title());
 // Automation link
 $lstp = cs_get_option('linksearchtype','sbt');
-echo $lstp;
 switch ( $getpt ) {
     case 'movies':
         if( $lstp == 'sbt' ) {
